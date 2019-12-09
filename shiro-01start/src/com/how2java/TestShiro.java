@@ -64,7 +64,7 @@ public class TestShiro {
     	for (User user : users) {
     		for (String role : roles) {
     			if(login(user)) {
-	    			if(hasRole(user, role)) 
+	    			if(hasRole(role))
 	    				System.out.printf("%s\t 拥有角色: %s\t%n",user.getName(),role);
 	    			else
 	    				System.out.printf("%s\t 不拥有角色: %s\t%n",user.getName(),role);
@@ -77,7 +77,7 @@ public class TestShiro {
     	for (User user : users) {
     		for (String permit : permits) {
     			if(login(user)) {
-    				if(isPermitted(user, permit)) 
+    				if(isPermitted(permit))
     					System.out.printf("%s\t 拥有权限: %s\t%n",user.getName(),permit);
     				else
     					System.out.printf("%s\t 不拥有权限: %s\t%n",user.getName(),permit);
@@ -100,6 +100,7 @@ public class TestShiro {
 	}
 	
 	private static Subject subject=getSubject();
+
 	private static boolean login(User user) {
 		//如果已经登录过了，退出
 		if(subject.isAuthenticated()){
@@ -119,11 +120,11 @@ public class TestShiro {
 		return subject.isAuthenticated();
 	}
 
-	private static boolean hasRole(User user, String role) {
+	private static boolean hasRole(String role) {
 		return subject.hasRole(role);
 	}
 
-	private static boolean isPermitted(User user, String permit) {
+	private static boolean isPermitted(String permit) {
 		return subject.isPermitted(permit);
 	}
 }
