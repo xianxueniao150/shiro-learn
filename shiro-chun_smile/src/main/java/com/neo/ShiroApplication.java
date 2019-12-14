@@ -10,3 +10,4 @@ public class ShiroApplication {
 		SpringApplication.run(ShiroApplication.class, args);
 	}
 }
+//http://www.ityouknow.com/springboot/2017/06/26/spring-boot-shiro.html
